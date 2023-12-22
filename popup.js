@@ -1,3 +1,4 @@
+// TODO refactor this code
 function analyzeFavicon(faviconUrl, callback) {
     const tempImage = new Image();
     tempImage.crossOrigin = 'Anonymous';
@@ -67,3 +68,24 @@ chrome.tabs.query({active: true, lastFocusedWindow: true}, ([currentTab]) => {
     
 });
 
+const blockButton = document.getElementById('blockButton');
+const viewListButton = document.getElementById('viewListButton');
+
+blockButton.addEventListener('click', () => {
+    chrome.tabs.query({ active: true, lastFocusedWindow: true }, ([currentTab]) => {
+        const blockedSite = {
+            url: currentTab.url,
+            domain: new URL(currentTab.url).hostname,
+        };
+        chrome.storage.local.get('blockedSites', ({ blockedSites }) => {
+            const updatedBlockedSites = blockedSites ? [...blockedSites, blockedSite] : [blockedSite];
+            chrome.storage.local.set({ blockedSites: updatedBlockedSites }, () => {
+                console.log('Site blocked:', blockedSite);
+            });
+        });
+    });
+});
+
+viewListButton.addEventListener('click', () => {
+    chrome.tabs.create({ url: 'index.html' });
+});

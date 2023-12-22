@@ -11,6 +11,7 @@
         "default_title": "Click to open Distraction Defender"
     },
     "permissions": [
-        "activeTab"
+        "activeTab",
+        "storage"
     ]
 }
