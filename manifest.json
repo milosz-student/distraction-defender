@@ -1,5 +1,16 @@
 {
     "manifest_version": 3,
     "name": "Distraction Defender",
-    "version": "1.0.0"
+    "version": "1.0.0",
+    "icons": {
+        "32": "images/icon-32.png"
+    },
+    "action": {
+        "default_icon": "images/icon-32.png",
+        "default_popup": "popup.html",
+        "default_title": "Click to open Distraction Defender"
+    },
+    "permissions": [
+        "activeTab"
+    ]
 }
