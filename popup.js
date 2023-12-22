@@ -16,8 +16,15 @@ function analyzeFavicon(faviconUrl, callback) {
         const colorCounts = {};
 
         for (let i = 0; i < pixels.length; i += 4) {
-            const color = `rgb(${pixels[i]}, ${pixels[i + 1]}, ${pixels[i + 2]})`;
-            colorCounts[color] = (colorCounts[color] || 0) + 1;
+            const r = pixels[i];
+            const g = pixels[i + 1];
+            const b = pixels[i + 2];
+            const alpha = pixels[i + 3];
+
+            if (!isNearWhite(r, g, b) && !isNearBlack(r, g, b)) {
+                const color = `rgb(${r}, ${g}, ${b})`;
+                colorCounts[color] = (colorCounts[color] || 0) + 1;
+            }
         }
 
         const mostCommonColor = Object.keys(colorCounts).reduce((a, b) => colorCounts[a] > colorCounts[b] ? a : b);
@@ -25,6 +32,18 @@ function analyzeFavicon(faviconUrl, callback) {
         callback(mostCommonColor);
     };
 }
+
+
+function isNearWhite(r, g, b) {
+    const threshold = 30;
+    return r > 255 - threshold && g > 255 - threshold && b > 255 - threshold;
+}
+
+function isNearBlack(r, g, b) {
+    const threshold = 30;
+    return r < threshold && g < threshold && b < threshold;
+}
+
 
 
 chrome.tabs.query({active: true, lastFocusedWindow: true}, ([currentTab]) => {
