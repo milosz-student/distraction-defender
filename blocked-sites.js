@@ -7,30 +7,53 @@ function setupBlockedSitesList() {
 
         if (blockedSites && blockedSites.length > 0) {
             blockedSites.forEach(site => {
-                const listItem = createBlockedSiteListItem(site);
+                const listItem = createBlockedSiteDiv(site);
                 blockedSitesList.appendChild(listItem);
             });
         } else {
-            const noBlockedSitesItem = document.createElement('li');
+            const noBlockedSitesItem = document.createElement('div');
+            noBlockedSitesItem.classList.add('blocked-site');
             noBlockedSitesItem.textContent = 'No sites blocked';
             blockedSitesList.appendChild(noBlockedSitesItem);
         }
     });
 }
 
-function createBlockedSiteListItem(site) {
-    const listItem = document.createElement('li');
-    listItem.textContent = site.url;
+
+function createBlockedSiteDiv(site) {
+    const siteUrl = new URL(site.url);
+
+
+
+    const div = document.createElement('div');
+    div.classList.add('blocked-site');
+    // refactor l8r
+    const faviconImg = document.createElement('img');
+    faviconImg.src = `https://www.google.com/s2/favicons?sz=64&domain_url=${encodeURIComponent(siteUrl.hostname)}`;
+
+    div.appendChild(faviconImg);
+
+    const textDiv = document.createElement('div');
+    textDiv.classList.add('text');
+
+    textDiv.textContent = siteUrl.hostname;
+
+    div.appendChild(textDiv);
+
+    const buttonDiv = document.createElement('div');
 
     const removeButton = document.createElement('button');
     removeButton.textContent = 'Remove';
     removeButton.addEventListener('click', () => {
         removeBlockedSite(site);
-        listItem.remove();
+        div.remove(); 
     });
 
-    listItem.appendChild(removeButton);
-    return listItem;
+    buttonDiv.appendChild(removeButton);
+
+    div.appendChild(buttonDiv);
+
+    return div;
 }
 
 function removeBlockedSite(site) {
