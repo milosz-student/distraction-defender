@@ -29,7 +29,7 @@ function createBlockedSiteDiv(site) {
     div.classList.add('blocked-site');
     // refactor l8r
     const faviconImg = document.createElement('img');
-    faviconImg.src = `https://www.google.com/s2/favicons?sz=64&domain_url=${encodeURIComponent(siteUrl.hostname)}`;
+    faviconImg.src = `https://www.google.com/s2/favicons?sz=32&domain_url=${encodeURIComponent(siteUrl.hostname)}`;
 
     div.appendChild(faviconImg);
 
