@@ -19,5 +19,13 @@
             "matches": ["<all_urls>"],
             "js": ["content.js"]
         }
-    ]
+    ],
+    "web_accessible_resources": [{
+        "resources": ["pages/blocked.html"],
+        "matches": [],
+        "extension_ids": []
+    }],
+    "background": {
+        "service_worker": "background.js"
+    }
 }
