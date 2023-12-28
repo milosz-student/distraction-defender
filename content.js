@@ -8,6 +8,6 @@ chrome.storage.local.get('blockedSites', function(data) {
     });
 
     if (isBlocked) {
-        window.location.href = 'https://example.com';
+        chrome.runtime.sendMessage({ redirect: "pages/blocked.html" });
     }
 });
