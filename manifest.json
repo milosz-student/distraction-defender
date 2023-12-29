@@ -6,7 +6,7 @@
         "32": "images/icon-32.png"
     },
     "action": {
-        "default_icon": "images/icon-32.png",
+        "default_icon": "images/icon-concept-32.png",
         "default_popup": "popup.html",
         "default_title": "Click to open Distraction Defender"
     },
