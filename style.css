@@ -75,3 +75,9 @@ h1 {
     border: none;
     border-radius: 3px;
 }
+
+h2 {
+    font-size: 24px;
+    text-align: center;
+    color: red;
+}
