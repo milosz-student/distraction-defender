@@ -1,13 +1,11 @@
 chrome.storage.local.get('blockedSites', function(data) {
-    var blockedSites = data.blockedSites || [];
-    var currentUrl = new URL(window.location.href);
-    var currentDomain = currentUrl.hostname;
+    const blockedSites = data.blockedSites || [];
+    const currentDomain = new URL(window.location.href).hostname;
 
-    var isBlocked = blockedSites.some(function(blockedSite) {
-        return currentDomain.includes(blockedSite.domain);
-    });
+    const isBlocked = blockedSites.some(blockedSite => currentDomain.includes(blockedSite.domain));
 
     if (isBlocked) {
-        chrome.runtime.sendMessage({ redirect: "pages/blocked.html" });
+        const redirectUrl = `pages/blocked.html?site=${currentDomain}`;
+        chrome.runtime.sendMessage({ redirect: redirectUrl });
     }
 });
