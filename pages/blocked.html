@@ -2,10 +2,17 @@
 <html>
 <head>
     <title>Blocked Page</title>
+    
     <link rel="stylesheet" type="text/css" href="../style.css">
     <script src="blocked.js"></script>
 </head>
 <body>
-    <h2>This page is blocked. Please focus on your work. Blocked site: <span id="blockedSiteUrl"></span></h2>
+    <div id="blockedContent">
+        <div id="blockedText"></div>
+        <div id="blockedSiteInfo">
+            You put <span id="blockedSiteUrl"></span> in your Block Sites list.<br>
+            It's probably there for a reason.
+        </div>
+    </div>
 </body>
 </html>
