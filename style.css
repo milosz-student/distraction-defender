@@ -94,6 +94,7 @@ h1 {
     margin-left: 20px;
     margin-top: 100px;
     font-family: 'IMFellEnglish-Regular';
+    color:white;
     -webkit-text-stroke-width: 1.5px;
     -webkit-text-stroke-color: rgb(41, 35, 1);
 }
@@ -125,11 +126,29 @@ h1 {
     background-color: rgba(0, 0, 0, 0.3);
     padding: 10px;
     text-align: left;
-    color: white;
     align-items: center;
     display: flex;
+    color: white;
 }
 
 #blockedTopBar img {
     margin-right: 10px;
+}
+
+#goBackButton {
+    font-family: 'IMFellEnglish-Regular';
+    background-color: rgba(0, 0, 0, 0.1);
+    height: 32px;
+    width: 32px;
+    border-style: none;
+    display: inline-block;
+    cursor: pointer;
+}
+
+#goBackButton img {
+    width: 100%;
+    height: 100%;
+}
+#goBackButton:hover {
+    background-color:  rgba(0, 0, 0, 0.6);
 }
