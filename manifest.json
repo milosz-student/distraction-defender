@@ -3,10 +3,12 @@
     "name": "Distraction Defender",
     "version": "1.0.0",
     "icons": {
-        "32": "images/icon-32.png"
+        "32": "images/icon/icon-32.png",
+        "64": "images/icon/icon-64.png",
+        "128": "images/icon/icon-128.png"
     },
     "action": {
-        "default_icon": "images/icon-concept-32.png",
+        "default_icon": "images/icon/icon-256.png",
         "default_popup": "popup.html",
         "default_title": "Click to open Distraction Defender"
     },
