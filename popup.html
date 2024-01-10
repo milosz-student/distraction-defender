@@ -7,13 +7,17 @@
 <body>
     <div id="siteInfo">
         <div id="siteIconContainer">
-            <img id="siteIcon" src="images/icon/www-icon-32.png" alt="Site Icon">
+            <div id="siteIconBackground">
+                <div id="siteIconImg">
+                    <img id="siteIcon" src="images/icon/www-icon-32.png" alt="Site Icon">
+                </div>
+            </div>
         </div>
         <div id="siteName"></div>
 
         <div id="buttons">
-            <button id="blockButton">Block this site</button>
-            <button id="viewListButton">View blocked sites</button>
+            <div id="blockButton">Block this site</div>
+            <div id="viewListButton">View blocked sites</div>
         </div>
     </div>
     <script type="module" src="popup.js"></script>
