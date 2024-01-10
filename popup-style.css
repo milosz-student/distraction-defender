@@ -65,13 +65,16 @@ body {
 }
 
 #blockButton,
-#viewListButton {
+#viewListButton,
+#refreshPageButton {
     cursor: pointer;
     padding: 10px;
     margin: 5px;
     border: none;
     border-radius: 3px;
     width: calc(90% - 10px);
+    background-color: gray;
+    display: block;
 }
 
 #blockButton {
@@ -80,4 +83,9 @@ body {
 
 #viewListButton {
     background-color: #6dbaf8;
+}
+
+#refreshPageButton,
+#blockedInfo {
+    display: none;
 }
