@@ -2,15 +2,12 @@
 import { analyzeFavicon } from './utils.js';
 
 
-// Pobierz tablicę z Chrome Storage Local
 chrome.storage.local.get('backgrounds', function (data) {
     const storedBackgrounds = data.backgrounds;
 
-    // Sprawdź, czy tablica już istnieje
     if (!storedBackgrounds) {
         const initialBackgrounds = ['background-1.png', 'background-2.png', 'background-3.png', 'background-4.png', 'background-5.png', 'background-6.png'];
 
-        // Zapisz tablicę do Chrome Storage Local
         chrome.storage.local.set({ 'backgrounds': initialBackgrounds }, function () {
             if (chrome.runtime.lastError) {
                 console.error('Error:', chrome.runtime.lastError);
