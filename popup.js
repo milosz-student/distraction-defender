@@ -34,7 +34,9 @@ chrome.tabs.query({active: true, lastFocusedWindow: true}, ([currentTab]) => {
             document.getElementById('siteIcon').src = faviconUrl;
 
             analyzeFavicon(faviconUrl, (mostCommonColor) => {
-                document.body.style.backgroundColor = mostCommonColor;
+                // document.body.style.backgroundColor = mostCommonColor;
+                document.getElementById('siteIconBackground').style.backgroundColor = mostCommonColor;
+
             });
         }
 
