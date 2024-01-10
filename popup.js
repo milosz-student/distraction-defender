@@ -1,4 +1,3 @@
-// TODO refactor this code
 import { analyzeFavicon } from './utils.js';
 
 
@@ -29,14 +28,10 @@ chrome.tabs.query({active: true, lastFocusedWindow: true}, ([currentTab]) => {
         let faviconUrl = currentTab.favIconUrl;
         if (faviconUrl) {
             // faviconImg.src = `https://www.google.com/s2/favicons?sz=64&domain_url=${encodeURIComponent(siteUrl.hostname)}`;
-
-            // this is a hacky way to get
             document.getElementById('siteIcon').src = faviconUrl;
 
             analyzeFavicon(faviconUrl, (mostCommonColor) => {
-                // document.body.style.backgroundColor = mostCommonColor;
                 document.getElementById('siteIconBackground').style.backgroundColor = mostCommonColor;
-
             });
         }
 
@@ -49,6 +44,8 @@ chrome.tabs.query({active: true, lastFocusedWindow: true}, ([currentTab]) => {
 
 const blockButton = document.getElementById('blockButton');
 const viewListButton = document.getElementById('viewListButton');
+const blockedInfo = document.getElementById('blockedInfo');
+const buttonsContainer = document.getElementById('buttons');
 
 blockButton.addEventListener('click', () => {
     chrome.tabs.query({ active: true, lastFocusedWindow: true }, ([currentTab]) => {
@@ -59,7 +56,16 @@ blockButton.addEventListener('click', () => {
         chrome.storage.local.get('blockedSites', ({ blockedSites }) => {
             const updatedBlockedSites = blockedSites ? [...blockedSites, blockedSite] : [blockedSite];
             chrome.storage.local.set({ blockedSites: updatedBlockedSites }, () => {
-                console.log('Site blocked:', blockedSite);
+                
+                blockButton.style.display = 'none';
+                viewListButton.style.display = 'none';
+
+                blockedInfo.style.display = 'block';
+                refreshPageButton.style.display = 'block';
+
+                refreshPageButton.addEventListener('click', () => {
+                    chrome.tabs.reload(currentTab.id);
+                });
             });
         });
     });
