@@ -65,6 +65,7 @@ blockButton.addEventListener('click', () => {
 
                 refreshPageButton.addEventListener('click', () => {
                     chrome.tabs.reload(currentTab.id);
+                    window.close();
                 });
             });
         });
