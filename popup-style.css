@@ -89,3 +89,7 @@ body {
 #blockedInfo {
     display: none;
 }
+
+#blockKnight {
+    width: 100%;
+}
